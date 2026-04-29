@@ -13,7 +13,6 @@ int main(){
     
     int ukuran;
 	
-    printf("kode nyala");
     scanf("%d",&ukuran);
 
     //inisialisasi array data dan temp
@@ -28,7 +27,6 @@ int main(){
         scanf("%d",&data[i].nilai);
     }
     //cek loop berhasil ga
-    printf("loop beres\n");
 
     //cek dulu data berhasil masuk ga
     for (int i = 0; i < ukuran; i++){
