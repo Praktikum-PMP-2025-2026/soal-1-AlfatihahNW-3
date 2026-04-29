@@ -17,7 +17,6 @@ int main(){
 
     //inisialisasi array data dan temp
     artefak data[ukuran]; 
-    artefak temp;
 
     for (int i = 0; i < ukuran; i++){
         
@@ -30,42 +29,45 @@ int main(){
 
     //cek dulu data berhasil masuk ga
 
-    //sorting kategori
-    for (int i = 0; i<ukuran;i++){
-        int min = i;
+//sorting kategori
+    for (int i = 0; i < ukuran; i++) {
 
-        for (int j = i + 1; j < ukuran; j++) {
-            if (strcmp(data[j].kategori, data[min].kategori) < 0) {
-                min = j;
+        for (int j = i+1; j < ukuran; j++) {
+            if (strcmp(data[i].kategori, data[j].kategori) > 0) {
+                artefak temp;
+                temp = data[i];
+                data[i] = data[j];
+                data[j] = temp;
             }
-        //sorting tahun-----------------------------------------------------------
-            else if(strcmp(data[j].kategori, data[min].kategori) == 0){
-                artefak temptahun;
-                for (int k = 0; k < ukuran - 1; k++) {
-                    int mintahun = k;
-                    for (int l = k + 1; l < ukuran; l++) {
-                        if (data[l].tahun < data[mintahun].tahun)
-                            mintahun = l;
+            else if(strcmp(data[i].kategori, data[j].kategori) == 0){
+                //sorting tahun-------------------------------
+                artefak temp;
+                if (data[i].tahun > data[j].tahun) {
+                    temp = data[i];
+                    data[i] = data[j];
+                    data[j] = temp;
+                }
+                //sorting nilai
+                else if(data[i].tahun == data[j].tahun){
+                    artefak temp;
+                    if (data[i].nilai < data[j].nilai) {
+                        temp = data[i];
+                        data[i] = data[j];
+                        data[j] = temp;
                     }
-                if (mintahun != k) {
-                        temptahun = data[mintahun];
-                        data[mintahun] = data[i];
-                        data[i] = temptahun;
+                    else if(data[i].nilai == data[j].nilai){
+                        if (strcmp(data[i].nama, data[j].nama) > 0) {
+                            artefak temp;
+                            temp = data[i];
+                            data[i] = data[j];
+                            data[j] = temp;
+                        }
                     }
                 }
             }
-        //----------------------------------------------------------------
-            
-        }
-        if (min != i) {
-            temp = data[i];
-            data[i] = data[min];
-            data[min]=temp;    
-        }
 
+        }
     }
-
-
     //cek sorting KATEGORI berhasil ga
     for (int i = 0; i < ukuran; i++){
         
@@ -74,6 +76,7 @@ int main(){
         printf("%d ",data[i].tahun);
         printf("%d\n",data[i].nilai);
     }
-
     return 0;
 }
+
+
