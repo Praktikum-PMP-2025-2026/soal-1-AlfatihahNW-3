@@ -29,12 +29,6 @@ int main(){
     //cek loop berhasil ga
 
     //cek dulu data berhasil masuk ga
-    for (int i = 0; i < ukuran; i++){
-        printf("%s ",data[i].nama);
-        printf("%s ",data[i].kategori);
-        printf("%d ",data[i].tahun);
-        printf("%d\n",data[i].nilai);
-    }
 
     //sorting kategori
     for (int i = 0; i<ukuran;i++){
