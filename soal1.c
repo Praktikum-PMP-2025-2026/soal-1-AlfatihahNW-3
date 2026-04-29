@@ -9,8 +9,6 @@ typedef struct artefak {
     int nilai;
 } artefak;
 
-
-
 int main(){
     
     int ukuran;
@@ -48,15 +46,31 @@ int main(){
             if (strcmp(data[j].kategori, data[min].kategori) < 0) {
                 min = j;
             }
+        //sorting tahun-----------------------------------------------------------
+            else if(strcmp(data[j].kategori, data[min].kategori) == 0){
+                artefak temptahun;
+                for (int k = 0; k < ukuran - 1; k++) {
+                    int mintahun = k;
+                    for (int l = k + 1; l < ukuran; l++) {
+                        if (data[l].tahun < data[mintahun].tahun)
+                            mintahun = l;
+                    }
+                if (mintahun != k) {
+                        temptahun = data[mintahun];
+                        data[mintahun] = data[i];
+                        data[i] = temptahun;
+                    }
+                }
+            }
+        //----------------------------------------------------------------
+            
         }
         if (min != i) {
             temp = data[i];
             data[i] = data[min];
             data[min]=temp;    
         }
-        //sorting tahun-----------------------------------------------------------
 
-        //----------------------------------------------------------------
     }
 
 
